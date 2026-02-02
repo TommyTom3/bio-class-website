@@ -22,18 +22,21 @@ nav {
   background-color: #6aa84f; /* earthy green */
   padding: 10px;
   display: flex;
-  flex-wrap: wrap;      /* allow nav links to wrap on small screens */
-  gap: 10px;
+  flex-wrap: wrap;           /* allow links to wrap on small screens */
+  gap: 5px;
   justify-content: center;
 }
 
 nav a {
-  color: #fffaf0;        /* off-white */
+  color: #fffaf0;            /* off-white */
   text-decoration: none;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 5px 8px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  flex: 1 1 auto;            /* allow links to shrink/grow */
+  min-width: 60px;           /* keep links clickable */
+  text-align: center;
   transition: background-color 0.2s;
 }
 
@@ -43,7 +46,7 @@ nav a:hover {
 
 /* --------- Page container --------- */
 .container {
-  max-width: 90%;        /* flexible width for mobile */
+  max-width: 90%;            /* flexible width for mobile */
   margin: 20px auto;
   padding: 20px;
   background-color: #fef9f0; /* very light yellow */
@@ -71,27 +74,34 @@ img, video {
   color: #6aa84f;
 }
 
-/* --------- Media Queries for small screens --------- */
+/* --------- Media Queries for medium screens --------- */
 @media (max-width: 768px) {
   h1 {
       font-size: 1.8em;
   }
   nav a {
-      font-size: 14px;
-      padding: 4px 8px;
+      font-size: 13px;
+      padding: 4px 6px;
   }
   .container {
       padding: 15px;
   }
 }
 
+/* --------- Media Queries for small phones --------- */
 @media (max-width: 480px) {
   h1 {
       font-size: 1.5em;
   }
+  nav {
+      flex-direction: column;   /* stack links vertically */
+      align-items: center;
+  }
   nav a {
-      font-size: 12px;
-      padding: 3px 6px;
+      width: 80%;               /* make links almost full width */
+      font-size: 13px;
+      padding: 6px 0;
+      margin: 3px 0;
   }
   .container {
       padding: 10px;
