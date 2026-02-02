@@ -1,72 +1,99 @@
 /* style.css */
 
-/* General body style */
+/* --------- General body style --------- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fff8f0; /* light beige */
-    color: #3b3b3b; /* dark gray text */
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Navigation bar */
-  nav {
-    background-color: #6aa84f; /* earthy green */
-    padding: 10px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-  
-  nav a {
-    color: #fffaf0; /* off-white */
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  nav a:hover {
-    background-color: #93c47d; /* lighter green on hover */
-  }
-  
-  /* Page container */
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fef9f0; /* very light yellow */
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Page headers */
+  font-family: Arial, sans-serif;
+  color: #3b3b3b; /* dark gray text */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------- Page-specific backgrounds --------- */
+body.page-index { background-color: #fff8f0; }      /* light beige */
+body.page-about { background-color: #fef3e6; }      /* soft peach */
+body.page-class { background-color: #f0f8e6; }      /* pale green */
+body.page-course { background-color: #e6f7ff; }     /* light blue */
+body.page-resources { background-color: #fff0f5; }  /* light lavender */
+body.page-quiz { background-color: #fffbe6; }       /* soft yellow */
+
+/* --------- Navigation bar --------- */
+nav {
+  background-color: #6aa84f; /* earthy green */
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;      /* allow nav links to wrap on small screens */
+  gap: 10px;
+  justify-content: center;
+}
+
+nav a {
+  color: #fffaf0;        /* off-white */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+nav a:hover {
+  background-color: #93c47d; /* lighter green on hover */
+}
+
+/* --------- Page container --------- */
+.container {
+  max-width: 90%;        /* flexible width for mobile */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fef9f0; /* very light yellow */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* --------- Headers --------- */
+h1 {
+  color: #e69138; /* warm orange */
+  text-align: center;
+  font-size: 2em;
+}
+
+/* --------- Images and Videos --------- */
+img, video {
+  max-width: 100%;      /* scale to fit container */
+  height: auto;         /* maintain aspect ratio */
+  display: block;
+  margin: 0 auto;       /* center media */
+}
+
+/* --------- Links inside container --------- */
+.container a {
+  color: #6aa84f;
+}
+
+/* --------- Media Queries for small screens --------- */
+@media (max-width: 768px) {
   h1 {
-    color: #e69138; /* warm orange */
-    text-align: center;
+      font-size: 1.8em;
   }
-  
-  /* Page-specific backgrounds */
-body.page-index {
-  background-color: #fff8f0; /* light beige */
+  nav a {
+      font-size: 14px;
+      padding: 4px 8px;
+  }
+  .container {
+      padding: 15px;
+  }
 }
 
-body.page-about {
-  background-color: #fef3e6; /* soft peach */
-}
-
-body.page-class {
-  background-color: #f0f8e6; /* pale green */
-}
-
-body.page-course {
-  background-color: #e6f7ff; /* light blue */
-}
-
-body.page-resources {
-  background-color: #fff0f5; /* light lavender */
-}
-
-body.page-quiz {
-  background-color: #fffbe6; /* soft yellow */
+@media (max-width: 480px) {
+  h1 {
+      font-size: 1.5em;
+  }
+  nav a {
+      font-size: 12px;
+      padding: 3px 6px;
+  }
+  .container {
+      padding: 10px;
+  }
 }
