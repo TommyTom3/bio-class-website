@@ -1,109 +1,229 @@
-/* style.css */
+/* style.css - clean rebuild */
 
-/* --------- General body style --------- */
+:root {
+  --nav-green: #2f6f3e;
+  --nav-green-hover: #3f8a53;
+  --text-light: #fffaf0;
+
+  /* Footer: tiny but safe across devices */
+  --footer-h: clamp(32px, 4.5vh, 44px);
+
+  /* Content panel spacing */
+  --content-max: 860px;
+  --side-nav-gap: 12px;
+}
+
+/* Basic reset */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  color: #3b3b3b; /* dark gray text */
+  color: #fffaf0;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-/* --------- Page-specific backgrounds --------- */
-body.page-index { background-color: #fff8f0; }      /* light beige */
-body.page-about { background-color: #fef3e6; }      /* soft peach */
-body.page-class { background-color: #f0f8e6; }      /* pale green */
-body.page-course { background-color: #e6f7ff; }     /* light blue */
-body.page-resources { background-color: #fff0f5; }  /* light lavender */
-body.page-quiz { background-color: #fffbe6; }       /* soft yellow */
+  /* Background on EVERY page */
+  background-image: url("images/background.png");
+  background-size: cover;         /* full screen */
+  background-position: center;    /* stays centered */
+  background-repeat: no-repeat;
 
-/* --------- Navigation bar --------- */
-nav {
-  background-color: #6aa84f; /* earthy green */
-  padding: 10px;
+  /* Layout: sticky footer that does NOT break */
+  min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;           /* allow links to wrap on small screens */
-  gap: 5px;
-  justify-content: center;
+  flex-direction: column;
 }
 
-nav a {
-  color: #fffaf0;            /* off-white */
-  text-decoration: none;
-  font-weight: bold;
-  padding: 5px 8px;
-  border-radius: 5px;
-  font-size: 14px;
-  flex: 1 1 auto;            /* allow links to shrink/grow */
-  min-width: 60px;           /* keep links clickable */
+/* Dark overlay so text is readable over the image */
+.page {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  
+  padding:
+    calc(56px 64px + 24px)   /* space for nav */
+    18px
+    64px;               /* space for footer */
+}
+
+/* Content block */
+.card {
+  width: min(860px, 92vw);
+  padding: 28px;
   text-align: center;
-  transition: background-color 0.2s;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  border-radius: 18px;
 }
 
-nav a:hover {
-  background-color: #93c47d; /* lighter green on hover */
-}
-
-/* --------- Page container --------- */
-.container {
-  max-width: 90%;            /* flexible width for mobile */
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fef9f0; /* very light yellow */
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
-
-/* --------- Headers --------- */
 h1 {
-  color: #e69138; /* warm orange */
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #ffd27a;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.85);
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.85);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+li {
+  margin: 10px 0;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.85);
+}
+/* ===============================
+   PROGRAM BANNER (ABOVE NAV)
+================================ */
+.program-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 16px 12px;
   text-align: center;
-  font-size: 2em;
+
+  background-color: #f1c232; /* gold */
+  color: #274e13;            /* forest green */
+
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  z-index: 10000; /* above nav */
+}
+/* ===============================
+   TOP HORIZONTAL NAV
+================================ */
+.top-nav {
+  position: fixed;
+  top: 56px; /* height of program banner */
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 12px 10px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+
+  z-index: 9999;
 }
 
-/* --------- Images and Videos --------- */
-img, video {
-  max-width: 100%;      /* scale to fit container */
-  height: auto;         /* maintain aspect ratio */
-  display: block;
-  margin: 0 auto;       /* center media */
+
+.top-nav a {
+  color: #fffaf0;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background-color: #2f6f3e;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* --------- Links inside container --------- */
-.container a {
-  color: #6aa84f;
+.top-nav a:hover {
+  background-color: #3f8a53;
+  transform: translateY(-1px);
 }
 
-/* --------- Media Queries for medium screens --------- */
-@media (max-width: 768px) {
-  h1 {
-      font-size: 1.8em;
-  }
-  nav a {
-      font-size: 13px;
-      padding: 4px 6px;
-  }
-  .container {
-      padding: 15px;
-  }
+.top-nav a.active {
+  outline: 3px solid #ffd27a;
+  outline-offset: 2px;
+}
+/* =========================================
+   Tiny footer pinned to bottom (ALL pages)
+   Works across screen sizes (no overlap bugs)
+========================================= */
+.footer {
+  height: var(--footer-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;               /* true bottom pin */
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  font-size: 12px;
+  padding: 0 10px;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--text-light);
+  backdrop-filter: blur(2px);
+
+  z-index: 5000; /* below nav, above background */
 }
 
-/* --------- Media Queries for small phones --------- */
-@media (max-width: 480px) {
-  h1 {
-      font-size: 1.5em;
+.footer p {
+  margin: 0;
+  font-size: 12px;
+  text-shadow: none;
+  opacity: 0.95;
+}
+
+/* =========================================
+   Mobile adjustments
+========================================= */
+@media (max-width: 600px) {
+
+  /* PROGRAM BANNER */
+  .program-banner {
+    font-size: 14px;
+    padding: 12px 10px;
+    letter-spacing: 0.8px;
   }
-  nav {
-      flex-direction: column;   /* stack links vertically */
-      align-items: center;
+
+  /* TOP NAV (wraps cleanly under banner) */
+  .top-nav {
+    top: 48px;               /* banner height on mobile */
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 8px;
   }
-  nav a {
-      width: 80%;               /* make links almost full width */
-      font-size: 13px;
-      padding: 6px 0;
-      margin: 3px 0;
+
+  .top-nav a {
+    font-size: 13px;
+    padding: 6px 10px;
   }
-  .container {
-      padding: 10px;
+
+  /* MAIN CONTENT AREA */
+  .page {
+    padding:
+      calc(48px + 56px + 18px)  /* banner + nav + spacing */
+      14px
+      56px;                    /* footer */
+  }
+
+  /* CONTENT CARD */
+  .card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  /* BODY TEXT */
+  p {
+    font-size: 1rem;
   }
 }
